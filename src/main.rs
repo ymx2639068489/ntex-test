@@ -1,6 +1,6 @@
 mod config;
 mod controller;
-
+mod entity;
 use ntex::web;
 use diesel::{r2d2, MysqlConnection};
 

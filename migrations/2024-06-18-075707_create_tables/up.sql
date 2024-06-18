@@ -6,9 +6,9 @@
 create table  admin
 (
        id                VARCHAR(36) not null comment 'ID',
-       role_id           VARCHAR(36) comment '对应角色',
-       company_id        VARCHAR(36) comment '所属公司',
-       username          VARCHAR(20) comment '账号',
+       role_id           VARCHAR(36) not null comment '对应角色',
+       company_id        VARCHAR(36) not null comment '所属公司',
+       username          VARCHAR(20) not null comment '账号',
        password          VARCHAR(100) not null comment '密码',
        nickname          VARCHAR(20) not null comment '用户名'
 ) comment '管理员';
@@ -44,7 +44,7 @@ alter  table role
 create table  company
 (
        id                VARCHAR(36) not null comment '编号',
-       name              VARCHAR(20) comment '公司名'
+       name              VARCHAR(20) not null comment '公司名'
 ) comment '公司';
 alter  table company
        add constraint PK_company_id primary key (id);
@@ -54,9 +54,9 @@ create unique index IDU_company_name on company(name);
 create table  salesman
 (
        id                INT primary key auto_increment not null comment '编号',
-       company_id        VARCHAR(36) comment '所属公司',
+       company_id        VARCHAR(36) not null comment '所属公司',
        username          VARCHAR(20) not null comment '销售员姓名',
-       phone             VARCHAR(20) comment '销售员电话'
+       phone             VARCHAR(20) not null comment '销售员电话'
 ) comment '销售员';
 create unique index IDU_salesman_phone on salesman(phone);
 
@@ -68,10 +68,10 @@ create table  custom
 (
        id                INT primary key auto_increment not null comment '编号',
        name              VARCHAR(10) not null comment '姓名',
-       phone             VARCHAR(20) comment '手机号',
+       phone             VARCHAR(20) not null comment '手机号',
        id_type           VARCHAR(20) comment '证件类型',
        id_number         VARCHAR(50) comment '证件号',
-       level             INT default 1 comment '用户级别'
+       level             INT default 1 not null comment '用户级别'
 ) comment '客户';
 create unique index IDU_custom_phone on custom(phone);
 
@@ -79,9 +79,9 @@ create unique index IDU_custom_phone on custom(phone);
 create table  custom_salesman
 (
        id                INT primary key auto_increment not null comment '系统内部id',
-       custom_id         INT comment '客户_编号',
-       salesman_id       INT comment '销售员_编号',
-       product_id        VARCHAR(36) comment '产品_编号',
+       custom_id         INT not null comment '客户_编号',
+       salesman_id       INT not null comment '销售员_编号',
+       product_id        VARCHAR(36) not null comment '产品_编号',
        create_at         DATETIME not null comment '创建时间',
        company           VARCHAR(20) not null comment '所属公司 销售员调到其他公司后，该记录应该属于是公司的',
        order_id          VARCHAR(30) not null comment '订单号 公司内部负责',
@@ -98,7 +98,7 @@ create table  custom_salesman
 create table  operator
 (
        id                INT primary key auto_increment not null comment '编号',
-       admin_id          VARCHAR(36) comment '操作者',
+       admin_id          VARCHAR(36) not null comment '操作者',
        teablename        VARCHAR(30) not null comment '表名',
        source_id         VARCHAR(32) not null comment '操作的对象ID',
        created_at        DATETIME not null comment '操作时间',
@@ -147,7 +147,7 @@ create unique index IDU_base_product_name on base_product(name);
 create table  ledger
 (
        id                VARCHAR(36) not null,
-       product_id        VARCHAR(36) comment '产品id',
+       product_id        VARCHAR(36) not null comment '产品id',
        product_name      VARCHAR(50) not null comment '产品名称',
        start_time        DATETIME not null comment '产品开始时间',
        end_time          DATETIME not null comment '产品结束时间',

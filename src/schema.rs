@@ -5,11 +5,11 @@ diesel::table! {
         #[max_length = 36]
         id -> Varchar,
         #[max_length = 36]
-        role_id -> Nullable<Varchar>,
+        role_id -> Varchar,
         #[max_length = 36]
-        company_id -> Nullable<Varchar>,
+        company_id -> Varchar,
         #[max_length = 20]
-        username -> Nullable<Varchar>,
+        username -> Varchar,
         #[max_length = 100]
         password -> Varchar,
         #[max_length = 20]
@@ -39,7 +39,7 @@ diesel::table! {
         #[max_length = 36]
         id -> Varchar,
         #[max_length = 20]
-        name -> Nullable<Varchar>,
+        name -> Varchar,
     }
 }
 
@@ -49,22 +49,22 @@ diesel::table! {
         #[max_length = 10]
         name -> Varchar,
         #[max_length = 20]
-        phone -> Nullable<Varchar>,
+        phone -> Varchar,
         #[max_length = 20]
         id_type -> Nullable<Varchar>,
         #[max_length = 50]
         id_number -> Nullable<Varchar>,
-        level -> Nullable<Integer>,
+        level -> Integer,
     }
 }
 
 diesel::table! {
     custom_salesman (id) {
         id -> Integer,
-        custom_id -> Nullable<Integer>,
-        salesman_id -> Nullable<Integer>,
+        custom_id -> Integer,
+        salesman_id -> Integer,
         #[max_length = 36]
-        product_id -> Nullable<Varchar>,
+        product_id -> Varchar,
         create_at -> Datetime,
         #[max_length = 20]
         company -> Varchar,
@@ -84,7 +84,7 @@ diesel::table! {
         #[max_length = 36]
         id -> Varchar,
         #[max_length = 36]
-        product_id -> Nullable<Varchar>,
+        product_id -> Varchar,
         #[max_length = 50]
         product_name -> Varchar,
         start_time -> Datetime,
@@ -108,7 +108,7 @@ diesel::table! {
     operator (id) {
         id -> Integer,
         #[max_length = 36]
-        admin_id -> Nullable<Varchar>,
+        admin_id -> Varchar,
         #[max_length = 30]
         teablename -> Varchar,
         #[max_length = 32]
@@ -130,7 +130,7 @@ diesel::table! {
         #[max_length = 36]
         id -> Varchar,
         #[max_length = 36]
-        base_product_id -> Nullable<Varchar>,
+        base_product_id -> Varchar,
         create_at -> Datetime,
         start_time -> Datetime,
         end_time -> Datetime,
@@ -168,11 +168,11 @@ diesel::table! {
     salesman (id) {
         id -> Integer,
         #[max_length = 36]
-        company_id -> Nullable<Varchar>,
+        company_id -> Varchar,
         #[max_length = 20]
         username -> Varchar,
         #[max_length = 20]
-        phone -> Nullable<Varchar>,
+        phone -> Varchar,
     }
 }
 

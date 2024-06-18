@@ -25,3 +25,5 @@ jsonwebtoken = "9.3"
 uuid = { version = "1.4.0", features = ["serde", "v4"] }
 # 时间
 chrono = { version = "0.4.35", features = ["serde"] }
+# 金钱类型
+bigdecimal = "0.4.2"
