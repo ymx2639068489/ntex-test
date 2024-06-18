@@ -6,7 +6,6 @@ use diesel::prelude::*;
 #[diesel(belongs_to(crate::schema::product::dsl::product, foreign_key = id))]
 pub struct LedgerDTO {
     pub id: String,
-    pub product_id: String,
     pub product_name: String,
     pub start_time: chrono::NaiveDateTime,
     pub end_time: chrono::NaiveDateTime,

@@ -83,8 +83,6 @@ diesel::table! {
     ledger (id) {
         #[max_length = 36]
         id -> Varchar,
-        #[max_length = 36]
-        product_id -> Varchar,
         #[max_length = 50]
         product_name -> Varchar,
         start_time -> Datetime,
@@ -181,6 +179,7 @@ diesel::joinable!(admin -> role (role_id));
 diesel::joinable!(custom_salesman -> custom (custom_id));
 diesel::joinable!(custom_salesman -> product (product_id));
 diesel::joinable!(custom_salesman -> salesman (salesman_id));
+diesel::joinable!(ledger -> product (id));
 diesel::joinable!(operator -> admin (admin_id));
 diesel::joinable!(product -> base_product (base_product_id));
 diesel::joinable!(salesman -> company (company_id));
