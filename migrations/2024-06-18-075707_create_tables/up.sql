@@ -177,7 +177,7 @@ alter  table custom_salesman
        add constraint FK_custom_man_custom_id179D foreign key (custom_id)
        references custom(id);
 alter  table custom_salesman
-       add constraint FK_custom_man_salesma_id3D2F foreign key (salesman_id)
+       add constraint FK_custom_man_salesman_id3D2F foreign key (salesman_id)
        references salesman(id);
 alter  table custom_salesman
        add constraint FK_custom_man_product_id9D56 foreign key (product_id)

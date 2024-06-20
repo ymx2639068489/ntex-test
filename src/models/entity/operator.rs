@@ -1,7 +1,8 @@
 use diesel::prelude::*;
 
 #[derive(Debug, Clone, Queryable, Selectable)]
-pub struct OperatorDO {
+#[diesel(table_name = crate::schema::operator)]
+pub struct OperatorEntity {
     pub id: i32,
     pub admin_id: String,
     pub teablename: String,

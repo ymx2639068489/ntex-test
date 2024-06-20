@@ -3,7 +3,7 @@ use diesel::prelude::*;
 
 #[derive(Queryable)]
 #[diesel(table_name = crate::schema::product)]
-pub struct ProductDO {
+pub struct ProductEntity {
     pub id: String,
     pub base_product_id: String,
     pub create_at: chrono::NaiveDateTime,

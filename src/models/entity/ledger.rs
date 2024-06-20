@@ -4,7 +4,7 @@ use diesel::prelude::*;
 #[derive(Debug, Clone, Selectable, Queryable, Insertable)]
 #[diesel(table_name = crate::schema::ledger)]
 #[diesel(belongs_to(crate::schema::product::dsl::product, foreign_key = id))]
-pub struct LedgerDTO {
+pub struct LedgerEntity {
     pub id: String,
     pub product_name: String,
     pub start_time: chrono::NaiveDateTime,

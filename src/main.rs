@@ -1,10 +1,21 @@
-mod config;
-mod controller;
-mod entity;
-use ntex::web;
-use diesel::{r2d2, MysqlConnection};
+#![recursion_limit = "128"]
 
-type DbPool = r2d2::Pool<r2d2::ConnectionManager<MysqlConnection>>;
+mod controller;
+mod service;
+mod dao;
+mod models;
+mod config;
+mod utils;
+mod schema;
+mod types;
+
+use ntex::web;
+use models::response::Response;
+use types::{
+    DbPool,
+    Pool,
+    Conn,
+};
 
 #[ntex::main]
 async fn main() -> std::io::Result<()> {
@@ -26,6 +37,7 @@ async fn main() -> std::io::Result<()> {
     .run()
     .await
 }
+
 fn init_env_and_get_dp() -> DbPool {
     // 环境变量
     dotenv::dotenv().ok();
@@ -36,8 +48,8 @@ fn init_env_and_get_dp() -> DbPool {
     let database_url = std::env::var("DATABASE_URL")
         .expect("DATABASE_URL must be set");
 
-    let pool: DbPool = r2d2::Pool::builder()
-        .build(r2d2::ConnectionManager::<MysqlConnection>::new(&database_url))
+    let pool: DbPool = diesel::r2d2::Pool::builder()
+        .build(diesel::r2d2::ConnectionManager::<diesel::MysqlConnection>::new(&database_url))
         .expect("database url error");
     pool
 }

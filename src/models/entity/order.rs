@@ -6,7 +6,7 @@ use bigdecimal::BigDecimal;
 #[diesel(belongs_to(crate::schema::custom::dsl::custom, foreign_key = custom_id))]
 #[diesel(belongs_to(crate::schema::salesman::dsl::salesman, foreign_key = salesman_id))]
 #[diesel(belongs_to(crate::schema::product::dsl::product, foreign_key = product_id))]
-pub struct OrderDO {
+pub struct OrderEntity {
     pub id: i32,
     pub custom_id: i32,
     pub salesman_id: i32,

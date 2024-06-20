@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Queryable, Serialize, Deserialize, Insertable, Selectable)]
 #[diesel(table_name = crate::schema::role)]
-pub struct RoleDO {
+pub struct RoleEntity {
     pub id: String,
     #[diesel(column_name = "rolename")]
     pub role_name: String,

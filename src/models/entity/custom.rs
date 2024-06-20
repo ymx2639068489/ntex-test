@@ -1,10 +1,10 @@
 use diesel::prelude::*;
-use serde::{Serialize, Deserialize};
+use serde::Serialize;
 
 // 完整的结构体
-#[derive(Debug, Clone, Queryable, Serialize, Selectable)]
+#[derive(Debug, Clone, Serialize, Queryable, Selectable)]
 #[diesel(table_name = crate::schema::custom)]
-pub struct CustomDTO {
+pub struct CustomEntity {
     pub id: i32,
     pub name: String,
     pub phone: String,

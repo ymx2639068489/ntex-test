@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 #[diesel(table_name = crate::schema::admin)]
 #[diesel(belongs_to(crate::schema::role::dsl::role, foreign_key = role_id))]
 #[diesel(belongs_to(crate::schema::company::dsl::company, foreign_key = company_id))]
-pub struct AdminDO {
+pub struct AdminEntity {
     pub id: String,
     pub role_id: String,
     pub company_id: String,
