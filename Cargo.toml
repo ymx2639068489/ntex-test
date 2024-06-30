@@ -15,6 +15,7 @@ diesel = { version = "2.1.5", features = ["mysql", "r2d2", "chrono", "bigdecimal
 # 序列化
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1"
+#serde_qs = "0.13.0"
 # 环境变量
 dotenv = "0.15.0"
 # logger
@@ -27,3 +28,6 @@ uuid = { version = "1.4.0", features = ["serde", "v4"] }
 chrono = { version = "0.4.35", features = ["serde"] }
 # 金钱类型
 bigdecimal = "0.4.2"
+#thiserror = "1.0.61"
+#futures = "0.3.30"
+#futures-util = "0.3.30"

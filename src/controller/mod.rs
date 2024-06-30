@@ -2,6 +2,7 @@ mod base_product;
 mod product;
 mod company;
 
+
 use ntex::web;
 
 pub fn init_routes(cfg: &mut web::ServiceConfig) {
@@ -26,6 +27,7 @@ pub fn init_routes(cfg: &mut web::ServiceConfig) {
                 .route("/update", web::put().to(company::update))
                 .route("/delete", web::delete().to(company::delete))
                 .route("/insert", web::delete().to(company::insert))
+                .route("/test", web::get().to(company::test))
         )
     ;
 }

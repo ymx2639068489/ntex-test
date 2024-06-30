@@ -22,10 +22,10 @@ const CLIENT_ERROR_CODE: i32 = 400;
 pub struct Response;
 
 impl Response {
-    pub fn ok<T>(data: T, message: &str) -> ResponseWrapper<T> {
+    pub fn ok<T>(data: T) -> ResponseWrapper<'static, T> {
         ResponseWrapper {
             code: SUCCESS_CODE,
-            message,
+            message: "获取成功",
             data: Some(data),
             pager: None,
             list: None,
