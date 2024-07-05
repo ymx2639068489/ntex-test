@@ -2,11 +2,21 @@ use std::future::{Ready, ready};
 use ntex::web::{HttpRequest, HttpResponse, Responder};
 use serde::Serialize;
 #[derive(Debug, Serialize)]
-struct Pager {
+pub struct Pager {
     pub page: i64,
     pub page_size: i64,
     pub total: i64,
 }
+impl Pager {
+  pub fn new(pager: &impl super::query::Pager, total: i64) -> Pager {
+    Pager {
+      page: pager.get_page(),
+      page_size: pager.get_page_size(),
+      total,
+    }
+  }
+}
+
 #[derive(Debug, Serialize)]
 pub struct ResponseWrapper<'a, T> {
     pub code: i32,
@@ -22,11 +32,11 @@ const CLIENT_ERROR_CODE: i32 = 400;
 pub struct Response;
 
 impl Response {
-    pub fn ok<T>(data: T) -> ResponseWrapper<'static, T> {
+    pub fn ok<T>(data: Option<T>) -> ResponseWrapper<'static, T> {
         ResponseWrapper {
             code: SUCCESS_CODE,
             message: "获取成功",
-            data: Some(data),
+            data,
             pager: None,
             list: None,
         }

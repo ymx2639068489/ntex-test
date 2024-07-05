@@ -12,7 +12,7 @@ impl CompanyEntity {
     pub fn new(name: String) -> CompanyEntity {
         CompanyEntity {
             id: uuid::Uuid::new_v4().to_string(),
-            name
+            name,
         }
     }
 }
